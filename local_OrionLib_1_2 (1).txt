@@ -1,0 +1,143 @@
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/soluesQP/Orion/main/Modded/Best"))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({
+    Name = "QP_태권도",
+    HidePremium = false,
+    SaveConfig = true,
+    IntroText = "QP_태권도 "
+})
+
+OrionLib:MakeNotification({
+    Name = "로그인! (V1)",
+    Content = "당신은 다음 계정으로 로그인했습니다. : "..Player.Name.."  ",
+    Image = "rbxassetid://4483345998",
+    Time = 3
+})
+
+local Tab = Window:MakeTab({
+    Name = "메인",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+function w()
+  OrionLib:MakeNotification({
+	Name = "작동됨!  ✅️",
+	Content = ""..Player.Name.."님 감사합니다!!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+end
+
+local expToggle = false
+local expToggle4x = false
+local teleportToggle = false
+
+Tab:AddToggle({
+    Name = "EXP 오토 팜",
+    Default = false,
+    Callback = function(value)
+        expToggle = value
+        if expToggle then
+            while expToggle do
+                local args = {
+                    [1] = 1
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Cilcker"):FireServer(unpack(args))
+                wait(0.0001)
+              w()
+            end
+        end
+    end
+})
+
+Tab:AddToggle({
+    Name = "돈 도우미 (클릭은 별도)",
+    Default = false,
+    Callback = function(value)
+        teleportToggle = value
+        if teleportToggle then
+            while teleportToggle do
+                local function teleportPlayer(pos)
+                    local player = game.Players.LocalPlayer
+                    if player then
+                        player.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+                    end
+                end
+
+                teleportPlayer(Vector3.new(70.05, 2, 225.65))
+                wait(2)
+                teleportPlayer(Vector3.new(0.59, 4, 47.97))
+                wait(2)
+            end
+        end
+    end
+})
+
+local Section = Tab:AddSection({
+    Name = "스피드 버전 (8배속)"
+})
+
+Tab:AddToggle({
+    Name = "EXP 오토 팜 (8배속)",
+    Default = false,
+    Callback = function(value)
+        expToggle4x = value
+        if expToggle4x then
+            while expToggle4x do
+                local args = {
+                    [1] = 8
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Cilcker"):FireServer(unpack(args))
+                wait(0.0001)
+            end
+        end
+    end
+})
+
+local Tab = Window:MakeTab({
+    Name = "오픈 소스!",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Tab:AddButton({
+    Name = "EXP 오픈 소스 [링크형식]",
+    Callback = function()
+        -- 클립보드에 복사할 텍스트
+        local textToCopy = "https://pastebin.com/raw/JciCtzeP"
+        
+        -- 클립보드에 텍스트 복사
+        setclipboard(textToCopy)
+        
+        -- 사용자에게 알림
+        OrionLib:MakeNotification({
+            Name = "복사 완료!",
+            Content = "✅️",
+            Image = "rbxassetid://4483345998",
+            Time = 2.2
+        })
+    end
+})
+
+Tab:AddButton({
+    Name = "돈 도우미 [링크형식]",
+    Callback = function()
+        -- 클립보드에 복사할 텍스트
+        local textToCopys = "https://pastebin.com/raw/cMrmRPAK"
+        
+        -- 클립보드에 텍스트 복사
+        setclipboard(textToCopys)
+        
+        -- 사용자에게 알림
+        OrionLib:MakeNotification({
+            Name = "복사 완료!",
+            Content = "✅️",
+            Image = "rbxassetid://4483345998",
+            Time = 2.2
+        })
+    end
+})
+
+
+ㅣ
